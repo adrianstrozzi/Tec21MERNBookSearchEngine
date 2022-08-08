@@ -19,16 +19,15 @@ const typeDefs = gql`
   bookId: String
   image: String
   link: String
-}
+  } 
 
   type User {
     _id: ID
     username: String
     email: String
-    bookCount: Float
+    bookCount: Int
     savedBooks: [Book]
   }
-  
 
   type Book {
     _id: ID
