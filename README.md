@@ -71,7 +71,7 @@ npm run start
 
 ![mainpage](./assets/readme-images/app.png)
 
-8 - You can go ahead and serach for books from the `search bar`:
+8 - You can go ahead and search for books from the `search bar`:
 
 ![mainpage](./assets/readme-images/search.png)
 
