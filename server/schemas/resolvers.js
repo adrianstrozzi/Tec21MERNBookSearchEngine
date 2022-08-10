@@ -21,13 +21,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('Can\'t find this user');
+        throw new AuthenticationError('No user found!');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Wrong password!');
+        throw new AuthenticationError('Incorrect password!');
       }
 
       const token = signToken(user);
@@ -40,7 +40,6 @@ const resolvers = {
         { $addToSet: { savedBooks: bookData } },
         { new: true }
       );
-      console.log(updatedUser);
       return updatedUser;
     },
     removeBook: async (parent, args, context) => {
