@@ -52,8 +52,8 @@ const SearchBooks = () => {
 
       setSearchedBooks(bookData);
       setSearchInput('');
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -70,11 +70,19 @@ const SearchBooks = () => {
     }
 
     try {
-      const response = await saveBook(bookToSave, token);
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      // const response = await saveBook(bookToSave, token);
+      console.log(bookToSave);
+      const { data } = await saveBook({
+        variables: {
+          bookToSave: {
+            authors: bookToSave.authors,
+            description: bookToSave.description,
+            title: bookToSave.title,
+            bookId: bookToSave.bookId,
+            image: bookToSave.image,
+          }
+        },
+      });
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
